@@ -1,0 +1,18 @@
+{
+  "name": "trabalho_01",
+  "version": "1.0.0",
+  "description": "Servidor para armazenamento de Dados e provenção via api",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.13"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
