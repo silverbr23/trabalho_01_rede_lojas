@@ -4,7 +4,7 @@
   "description": "Servidor para armazenamento de Dados e provenção via api",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
