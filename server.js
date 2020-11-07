@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true}))
 app.use(express.json())
 
 //Start Server
-app.listen(3000, ()=> console.log("Server started on 3000"))
+app.listen(process.env.PORT || 3000, ()=> console.log("Server started on 3000"))
 
 //Controllers
 const FilialControl = require('./controllers/FilialController')
