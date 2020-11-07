@@ -48,5 +48,18 @@ module.exports = {
             res.json({ success: true, result: result })
         })
         .catch(err => res.json({success: false, result: err}))
-    }
+    },
+
+    verificUsuario:(req, res) => {
+        
+        UsuarioModel.find({name: req.body.name})
+        .then(usuario => {
+            if (!usuario) res.json({ success: false, result: "Não foram encontradas Usuarios"})
+
+            res.json({ sucess: true, result: usuario})
+        })
+        .catch(err => {
+            res.json({ success: false, result: err})
+        })
+    },
 }
