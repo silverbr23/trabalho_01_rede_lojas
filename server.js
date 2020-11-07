@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const app = express()
 
 //Database
-mongoose.connect('mongodb://127.0.0.1:27017/piffermart', {useNewUrlParser: true })
+mongoose.connect('mongodb+srv://hayffer:1234567890@cluster0.imvlm.mongodb.net/<dbname>?retryWrites=true&w=majority', {useNewUrlParser: true })
 .then(() => console.log("Connected to database"))
 .catch(err => console.log(err))
 
