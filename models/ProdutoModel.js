@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 const ProdutoSchema = new Schema({
 name: String,
 identificador: String,
-preço: Number,
+preco: Number,
 filial: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'filial'
