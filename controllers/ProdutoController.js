@@ -5,6 +5,7 @@ module.exports = {
         let produto = new ProdutoModel({
             name: req.body.name,
             identificador: req.body.identificador,
+            preco: req.body.preco,
             filial: req.body.filial
         })
         produto.save()
