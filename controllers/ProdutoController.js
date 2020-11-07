@@ -2,12 +2,12 @@ const ProdutoModel = require('../models/ProdutoModel');
 
 module.exports = {
     create: (req, res) => {
-        let usuario = new ProdutoModel({
+        let produto = new ProdutoModel({
             name: req.body.name,
             identificador: req.body.identificador,
             filial: req.body.filial
         })
-        usuario.save()
+        produto.save()
         .then(result => {
             res.json({ success: true, result: result})
         })
@@ -17,11 +17,11 @@ module.exports = {
     },
 
     update: (req, res) => {
-        UsuarioModel.update({_id: req.body._id}, req.body)
-    .then(usuario => {
-        if (!usuario) res.json({ success: false, result: "Usuario Inexistente"})
+        ProdutoModel.update({_id: req.body._id}, req.body)
+    .then(produto => {
+        if (!produto) res.json({ success: false, result: "Usuario Inexistente"})
       
-        res.json(usuario)
+        res.json(produto)
     })
       .catch(err => {
           res.json({ success: false, result: err})
@@ -29,11 +29,11 @@ module.exports = {
     },
 
     retrieve: (req, res) => {
-        UsuarioModel.find()
-        .then(usuario => {
-            if (!usuario) res.json({ success: false, result: "Não foram encontradas Usuarios"})
+        ProdutoModel.find()
+        .then(produto => {
+            if (!produto) res.json({ success: false, result: "Não foram encontradas Usuarios"})
 
-            res.json({ sucess: true, result: result})
+            res.json({ sucess: true, result: produto})
         })
         .catch(err => {
             res.json({ success: false, result: err})
@@ -41,9 +41,9 @@ module.exports = {
     },
 
     delete: (req, res) => {
-        UsuarioModel.remove({ _id: req.body._id})
-        .then(usuario => {
-            if (!usuario) res.json({ success: false, result: "Nenhuma usuario com este Id foi encontrada" })
+        ProdutoModel.remove({ _id: req.body._id})
+        .then(produto => {
+            if (!produto) res.json({ success: false, result: "Nenhuma produto com este Id foi encontrada" })
             res.json({ success: true, result: result })
         })
         .catch(err => res.json({success: false, result: err}))

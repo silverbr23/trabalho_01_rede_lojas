@@ -32,7 +32,7 @@ module.exports = {
         .then(filial => {
             if (!filial) res.json({ success: false, result: "Não foram encontradas Filiais"})
 
-            res.json({ sucess: true, result: result})
+            res.json({ sucess: true, result: filial})
         })
         .catch(err => {
             res.json({ success: false, result: err})

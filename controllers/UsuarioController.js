@@ -4,7 +4,7 @@ module.exports = {
     create: (req, res) => {
         let usuario = new UsuarioModel({
             name: req.body.name,
-            identificador: req.body.identificador,
+            cpf: req.body.cpf,
             filial: req.body.filial
         })
         usuario.save()
@@ -29,11 +29,12 @@ module.exports = {
     },
 
     retrieve: (req, res) => {
+        
         UsuarioModel.find()
         .then(usuario => {
             if (!usuario) res.json({ success: false, result: "Não foram encontradas Usuarios"})
 
-            res.json({ sucess: true, result: result})
+            res.json({ sucess: true, result: usuario})
         })
         .catch(err => {
             res.json({ success: false, result: err})
