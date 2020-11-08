@@ -27,7 +27,7 @@ app.delete('/api/filial/delete', FilialControl.delete)
 
 app.post('/api/produto/create', ProdutoControl.create)
 app.post('/api/produto/update', ProdutoControl.update)
-app.get('/api/produto/getSpecificProduct', ProdutoControl.getSpecificProduct)
+app.post('/api/produto/getSpecificProduct', ProdutoControl.getSpecificProduct)
 app.get('/api/produto/retrieve', ProdutoControl.retrieve)
 app.delete('/api/produto/delete', ProdutoControl.delete)
 
