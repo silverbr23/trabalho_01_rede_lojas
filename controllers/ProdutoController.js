@@ -10,56 +10,108 @@ module.exports = {
             filial: req.body.filial
         })
         produto.save()
-        .then(result => {
-            res.json({ success: true, result: result})
-        })
-        .catch(err => {
-             res.json({ success: false, result: err})
+            .then(result => {
+                res.json({
+                    success: true,
+                    result: result
+                })
+            })
+            .catch(err => {
+                res.json({
+                    success: false,
+                    result: err
+                })
             })
     },
 
     update: (req, res) => {
-        ProdutoModel.update({_id: req.body._id}, req.body)
-    .then(produto => {
-        if (!produto) res.json({ success: false, result: "Usuario Inexistente"})
-      
-        res.json(produto)
-    })
-      .catch(err => {
-          res.json({ success: false, result: err})
-      })
+        ProdutoModel.update({
+                _id: req.body._id
+            }, req.body)
+            .then(produto => {
+                if (!produto) res.json({
+                    success: false,
+                    result: "Usuario Inexistente"
+                })
+
+                res.json(produto)
+            })
+            .catch(err => {
+                res.json({
+                    success: false,
+                    result: err
+                })
+            })
     },
 
     retrieve: (req, res) => {
         ProdutoModel.find()
-        .then(produto => {
-            if (!produto) res.json({ success: false, result: "Não foram encontradas Usuarios"})
+            .then(produto => {
+                if (!produto) res.json({
+                    success: false,
+                    result: "Não foram encontradas Usuarios"
+                })
 
-            res.json({ sucess: true, result: produto})
-        })
-        .catch(err => {
-            res.json({ success: false, result: err})
-        })
+                res.json({
+                    sucess: true,
+                    result: produto
+                })
+            })
+            .catch(err => {
+                res.json({
+                    success: false,
+                    result: err
+                })
+            })
     },
 
     delete: (req, res) => {
-        ProdutoModel.remove({ _id: req.body._id})
-        .then(produto => {
-            if (!produto) res.json({ success: false, result: "Nenhuma produto com este Id foi encontrada" })
-            res.json({ success: true, result: result })
-        })
-        .catch(err => res.json({success: false, result: err}))
+        ProdutoModel.remove({
+                _id: req.body._id
+            })
+            .then(produto => {
+                if (!produto) res.json({
+                    success: false,
+                    result: "Nenhuma produto com este Id foi encontrada"
+                })
+                res.json({
+                    success: true,
+                    result: result
+                })
+            })
+            .catch(err => res.json({
+                success: false,
+                result: err
+            }))
     },
 
-    getSpecificProduct: (req,res)=>{
-        ProdutoModel.find({name:req.body.name})
-        .then(produto => {
-            if (!produto) res.json({ success: false, result: "Não foram encontradas Usuarios"})
-            let dataFilial = FilialModel.findById(produto.filial)
-            res.json({ sucess: true,  resultProd: produto, resultFilial: dataFilial})
-        })
-        .catch(err => {
-            res.json({ success: false, result: err})
-        })
+    getSpecificProduct: (req, res) => {
+        ProdutoModel.find({
+                name: req.body.name
+            })
+            .then(async produto => {
+                var resultFilial = []
+                var result = []
+                if (!produto) res.json({
+                    success: false,
+                    result: "Não foram encontradas Produtos"
+                })
+            for (const iterator of produto) {
+                resultFilial.push(await FilialModel.findById(iterator.filial))
+            
+            }
+             
+            res.json({
+                success: true,
+                resultFilial: resultFilial,
+                resultProd: produto
+            })
+            }).catch(err => {
+                res.json({
+                    success: false,
+                    result: err
+                })
+            })
+
     }
 }
