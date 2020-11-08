@@ -1,4 +1,5 @@
 const ProdutoModel = require('../models/ProdutoModel');
+const FilialModel = require('../models/FilialModel');
 
 module.exports = {
     create: (req, res) => {
@@ -54,8 +55,8 @@ module.exports = {
         ProdutoModel.find({name:req.body.name})
         .then(produto => {
             if (!produto) res.json({ success: false, result: "Não foram encontradas Usuarios"})
-
-            res.json({ sucess: true, result: produto})
+            let dataFilial = FilialModel.findById(produto.filial)
+            res.json({ sucess: true,  resultProd: produto, resultFilial: dataFilial})
         })
         .catch(err => {
             res.json({ success: false, result: err})
