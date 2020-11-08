@@ -48,5 +48,17 @@ module.exports = {
             res.json({ success: true, result: result })
         })
         .catch(err => res.json({success: false, result: err}))
+    },
+
+    getSpecificProduct: (req,res)=>{
+        ProdutoModel.find({name:req.body.name})
+        .then(produto => {
+            if (!produto) res.json({ success: false, result: "Não foram encontradas Usuarios"})
+
+            res.json({ sucess: true, result: produto})
+        })
+        .catch(err => {
+            res.json({ success: false, result: err})
+        })
     }
 }
