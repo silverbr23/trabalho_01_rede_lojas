@@ -103,8 +103,9 @@ module.exports = {
              
             res.json({
                 success: true,
-                resultFilial: resultFilial,
+                result:{resultFilial: resultFilial,
                 resultProd: produto
+                }
             })
             }).catch(err => {
                 res.json({
